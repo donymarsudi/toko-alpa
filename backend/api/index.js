@@ -59,7 +59,7 @@
 // });
 
 // import AlpaProducts from "./model/alpaProducts.js";
-import "./utils/db.js";
+import "../utils/db.js";
 import mongoose from "mongoose";
 const AlpaProducts = mongoose.model("AlpaProducts", {
   name: {
