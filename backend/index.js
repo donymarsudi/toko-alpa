@@ -58,8 +58,31 @@
 //   console.log(`Server is running on port: ${port}`);
 // });
 
-import AlpaProducts from "./model/alpaProducts.js";
+// import AlpaProducts from "./model/alpaProducts.js";
 import "./utils/db.js";
+import mongoose from "mongoose";
+mongoose.model("AlpaProducts", {
+  name: {
+    type: String,
+    required: true,
+  },
+  desc: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  image: {
+    type: String,
+    required: true,
+  },
+  category: {
+    type: String,
+    required: true,
+  },
+});
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
