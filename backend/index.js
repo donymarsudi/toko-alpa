@@ -58,7 +58,7 @@
 //   console.log(`Server is running on port: ${port}`);
 // });
 
-import AlpaProducts from "../model/alpaProducts.js";
+import AlpaProducts from "./model/alpaProducts.js";
 import "./utils/db.js";
 
 export default async function handler(req, res) {
