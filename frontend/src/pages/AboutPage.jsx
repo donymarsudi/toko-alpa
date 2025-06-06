@@ -1,6 +1,7 @@
 import Header from "../layouts/Header";
 import Hero from "../layouts/Hero";
-import VisionAndMision from "../layouts/visionAndMision";
+// import VisionAndMision from "../layouts/visionAndMision";
+import VisionAndMision from "../layouts/VisionAndMision/index";
 import Testimonial from "../layouts/Testimonial";
 import Footer from "../layouts/Footer/index";
 
