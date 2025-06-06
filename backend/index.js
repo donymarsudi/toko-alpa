@@ -12,7 +12,7 @@ const port = process.env.PORT || 8000;
 app.use(cors());
 app.use(express.json());
 
-app.get("/products", async (req, res) => {
+app.get("/", async (req, res) => {
   try {
     const products = await AlpaProducts.find();
     res.status(200).json(products);
