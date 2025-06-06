@@ -1,11 +1,28 @@
 import nodemailer from "nodemailer";
+import { buffer } from "micro";
 import dotenv from "dotenv";
 dotenv.config();
 
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
 export default async function handler(req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") {
+    res.status(200).end();
+    return;
+  }
+
   if (req.method === "POST") {
     try {
-      const { nama, email, subjek, pesan } = req.body;
+      const rawBody = await buffer(req);
+      const { nama, email, subjek, pesan } = JSON.parse(rawBody.toString());
 
       const transporter = nodemailer.createTransport({
         service: "gmail",
