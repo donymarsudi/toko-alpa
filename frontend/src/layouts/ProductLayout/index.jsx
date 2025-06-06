@@ -7,7 +7,7 @@ export default function ProductLayout() {
   const [sayuran, setSayuran] = useState([]);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}`)
+    fetch(`${import.meta.env.VITE_API_URL}/`)
       .then((res) => res.json())
       .then((res) => ALL_PRODUCTS(res))
       .catch((err) => console.log(err));
