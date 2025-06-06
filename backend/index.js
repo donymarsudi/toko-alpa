@@ -61,7 +61,7 @@
 // import AlpaProducts from "./model/alpaProducts.js";
 import "./utils/db.js";
 import mongoose from "mongoose";
-mongoose.model("AlpaProducts", {
+const AlpaProducts = mongoose.model("AlpaProducts", {
   name: {
     type: String,
     required: true,
