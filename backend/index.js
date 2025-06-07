@@ -22,36 +22,33 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/contact", (req, res) => {
-  try {
-    const { nama, email, subjek, pesan } = req.body;
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+  const { nama, email, subjek, pesan } = req.body;
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
 
-    const mailOptions = {
-      from: email,
-      to: "donimarsudi16@gmail.com",
-      subject: subjek,
-      text: pesan,
-    };
+  const mailOptions = {
+    from: email,
+    to: "donimarsudi16@gmail.com",
+    subject: subjek,
+    text: pesan,
+  };
 
-    transporter.sendMail(mailOptions, (err, info) => {
-      if (err) {
-        console.error(err);
-        res.send("Gagal mengirim pesan.");
-      } else {
-        console.log("Email terkirim:", info.response);
-        res.send("Pesan berhasil dikirim!");
-      }
-    });
-    res.status(200).json({ success: "Pesan berhasil dikirim", error: null });
-  } catch (error) {
-    res.status(500).json({ error: "Gagal mengirim pesan", success: null });
-  }
+  transporter.sendMail(mailOptions, (err, info) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({ error: "Gagal mengirim pesan", success: null });
+    } else {
+      return res
+        .status(200)
+        .json({ success: "Pesan berhasil dikirim", error: null });
+    }
+  });
 });
 
 app.listen(port, () => {
