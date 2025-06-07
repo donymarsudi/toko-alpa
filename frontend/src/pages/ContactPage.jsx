@@ -62,7 +62,7 @@ function ContactForm() {
     e.preventDefault();
     const FORM_DATA = new FormData(e.target);
     const DATA = Object.fromEntries(FORM_DATA);
-    fetch(`${import.meta.env.VITE_API_URL}/api/contact`, {
+    fetch(`${import.meta.env.VITE_API_URL}contact`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
